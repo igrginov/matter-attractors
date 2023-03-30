@@ -1,5 +1,5 @@
 /*!
- * matter-attractors 0.1.6 by Liam Brummitt 2017-05-15
+ * matter-attractors 0.1.8 by Liam Brummitt 2023-03-30
  * https://github.com/liabru/matter-attractors
  * License MIT
  */
@@ -104,7 +104,7 @@ var Matter = __webpack_require__(0);
 var MatterAttractors = {
   // plugin meta
   name: 'matter-attractors', // PLUGIN_NAME
-  version: '0.1.4', // PLUGIN_VERSION
+  version: '0.1.7', // PLUGIN_VERSION
   for: 'matter-js@^0.12.0',
 
   // installs the plugin where `base` is `Matter`
@@ -149,7 +149,11 @@ var MatterAttractors = {
             attractors = bodyA.plugin.attractors;
 
         if (attractors && attractors.length > 0) {
-          for (var j = i + 1; j < bodies.length; j += 1) {
+          for (var j = 0; j < bodies.length; j += 1) {
+            if (j === i) {
+              continue;
+            }
+
             var bodyB = bodies[j];
 
             for (var k = 0; k < attractors.length; k += 1) {
